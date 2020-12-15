@@ -37,6 +37,7 @@ if [ ! -f ${DATA_DIR}/q3ut4/server.cfg ]; then
 else
     echo "---'server.cfg' found, continuing!---"
 fi
+chmod -R ${DATA_PERM} ${DATA_DIR}
 
 echo "---Starting Urban Terror---"
 cd ${DATA_DIR}
