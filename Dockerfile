@@ -8,6 +8,8 @@ RUN apt-get update && \
 
 ENV DATA_DIR="/urbanterror"
 ENV DL_URL="http://www.urbanterror.info/downloads/software/urt/43/UrbanTerror43_ded.tar.gz"
+ENV GAME_V="1"
+ENV ENGINE="1"
 ENV START_PARAMS=""
 ENV UMASK=0000
 ENV DATA_PERM=770
