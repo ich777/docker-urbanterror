@@ -2,7 +2,8 @@
 echo "---Searching Urban Terror updater---"
 if [ ! -f ${DATA_DIR}/Ur*.sh ]; then
     echo "---Urban Terror updater not found, downloading, please wait...---"
-    if wget "$(wget -qO- "${DL_URL}" | grep "tar.gz?key=" | cut -d '"' -f4 | cut -d '=' -f2-)" ; then
+    cd ${DATA_DIR}
+    if wget -q "$(wget -qO- "${DL_URL}" | grep "tar.gz?key=" | cut -d '"' -f4 | cut -d '=' -f2-)" ; then
         echo "---Successfully downloaded Urban Terror updater---"
     else
         echo "---Something went wrong, can't download Urban Terror updater, putting container into sleep mode!---"
