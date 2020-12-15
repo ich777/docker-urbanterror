@@ -20,14 +20,11 @@ echo "---Checking if Urban Terror is installed---"
 if [ ! -f ${DATA_DIR}/Quake3-UrT-Ded.x86_64 ]; then
     echo "---Urban Terror not found, please wait...---"
     cd ${DATA_DIR}
-    echo "y
-${GAME_V}
-${DL_LOCATION}
-${ENGINE}
-n" | ${DATA_DIR}/Ur*
+    echo -e "y\n${GAME_V}\n${DL_LOCATION}\n${ENGINE}\nn\n" | ${DATA_DIR}/Ur*.sh
+    echo -e "y\n" | ${DATA_DIR}/Ur*.sh
 elif [ "${CHECK_FOR_UPDATES}" == "true" ]; then
     echo "---Urban Terror found, checking for updates---"
-    echo "n" | ${DATA_DIR}/Ur*
+    echo "y\n" | ${DATA_DIR}/Ur*
 else
     echo "---Urban Terror found, update check skiped---"
 fi
