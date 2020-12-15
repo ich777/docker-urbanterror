@@ -3,7 +3,7 @@ FROM ich777/debian-baseimage
 LABEL maintainer="admin@minenet.at"
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends expect curl libxml2-utils libsdl2-2.0-0 && \
+	apt-get -y install --no-install-recommends curl libxml2-utils libsdl2-2.0-0 && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/urbanterror"
