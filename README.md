@@ -28,7 +28,7 @@ docker run --name Urban-Terror -d \
 	--env 'GID=100' \
 	--env 'UMASK=0000' \
 	--env 'DATA_PERMS=770' \
-	--volume /mnt/cache/appdata/urban-terror:/urbanterror \
+	--volume /path/to/urban-terror:/urbanterror \
 	ich777/urbanterror
 ```
 
