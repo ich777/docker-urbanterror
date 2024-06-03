@@ -30,15 +30,19 @@ else
 fi
 
 echo "---Preparing Server---"
-if [ ! -f ${DATA_DIR}/q3ut4/server.cfg ]; then
-    echo "---'server.cfg' not found, creating...---"
-    cp ${DATA_DIR}/q3ut4/server_example.cfg ${DATA_DIR}/q3ut4/server.cfg
-    sed -i "/set  sv_hostname                       \"New Unnamed Server\"/c\set  sv_hostname                       \"Docker Server\"" ${DATA_DIR}/q3ut4/server.cfg
+if [ ! -z "${CONFIG_NAME}" ] && [ -f ${DATA_DIR}/q3ut4/${CONFIG_NAME} ]; then
+    echo "---Found custom server configuration file: ${CONFIG_NAME} ---"
 else
-    echo "---'server.cfg' found, continuing!---"
+    if [ ! -f ${DATA_DIR}/q3ut4/server.cfg ]; then
+        echo "---'server.cfg' not found, creating...---"
+        cp ${DATA_DIR}/q3ut4/server_example.cfg ${DATA_DIR}/q3ut4/server.cfg
+        sed -i "/set  sv_hostname                       \"New Unnamed Server\"/c\set  sv_hostname                       \"Docker Server\"" ${DATA_DIR}/q3ut4/server.cfg
+    else
+        echo "---'server.cfg' found, continuing!---"
+    fi
 fi
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
 echo "---Starting Urban Terror---"
 cd ${DATA_DIR}
-${DATA_DIR}/Quake3-UrT-Ded.x86_64 +set net_port ${GAME_PORT} +set fs_homepath ${DATA_DIR} +exec server.cfg ${START_PARAMS}
+${DATA_DIR}/Quake3-UrT-Ded.x86_64 +set net_port ${GAME_PORT} +set fs_homepath ${DATA_DIR} +exec ${CONFIG_NAME} ${START_PARAMS}

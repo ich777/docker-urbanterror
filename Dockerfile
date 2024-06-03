@@ -8,6 +8,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/urbanterror"
+ENV CONFIG_NAME="server.cfg"
 ENV DL_URL="http://www.urbanterror.info/downloads/software/urt/43/UrbanTerror43_ded.tar.gz"
 ENV GAME_V="1"
 ENV DL_LOCATION="1"

@@ -12,6 +12,7 @@ Urban Terror can be described as a Hollywood tactical shooter; somewhat realism 
 | Name | Value | Example |
 | --- | --- | --- |
 | DATA_DIR | Folder for configfiles and the application | /urbanterror |
+| CONFIG_NAME | Specify a custom server configuration file name | server-ctf.cfg |
 | START_PARAMS | Enter you extra startup parameters if needed | *empty* |
 | CHECK_FOR_UPDATES | Set to 'true' (without quotes) to search for updates on every start/restart otherwise leave empty | true |
 | UID | User Identifier | 99 |
