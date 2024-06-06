@@ -30,8 +30,14 @@ else
 fi
 
 echo "---Preparing Server---"
-if [ ! -z "${CONFIG_NAME}" ] && [ -f ${DATA_DIR}/q3ut4/${CONFIG_NAME} ]; then
+if [ ! -z "${CONFIG_NAME}" ]; then
     echo "---Found custom server configuration file: ${CONFIG_NAME} ---"
+    if [ ! -f "${DATA_DIR}/q3ut4/${CONFIG_NAME}" ]; then
+      echo "--------------------------------------------------"
+      echo "---ERROR! The file ${CONFIG_NAME} does not exist---"
+      echo "--------------------------------------------------"
+      exit 1
+    fi
 else
     if [ ! -f ${DATA_DIR}/q3ut4/server.cfg ]; then
         echo "---'server.cfg' not found, creating...---"
