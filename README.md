@@ -12,6 +12,7 @@ Urban Terror can be described as a Hollywood tactical shooter; somewhat realism 
 | Name | Value | Example |
 | --- | --- | --- |
 | DATA_DIR | Folder for configfiles and the application | /urbanterror |
+| CONFIG_NAME | Specify your configuration name (leave it as is if you don't plan to run multiple servers from one directory) | server.cfg |
 | START_PARAMS | Enter you extra startup parameters if needed | *empty* |
 | CHECK_FOR_UPDATES | Set to 'true' (without quotes) to search for updates on every start/restart otherwise leave empty | true |
 | UID | User Identifier | 99 |
@@ -23,12 +24,14 @@ Urban Terror can be described as a Hollywood tactical shooter; somewhat realism 
 ```
 docker run --name Urban-Terror -d \
 	-p 27960:27960/udp \
+	--env 'CONFIG_NAME=server.cfg' \
 	--env 'CHECK_FOR_UPDATES=true' \
 	--env 'UID=99' \
 	--env 'GID=100' \
 	--env 'UMASK=0000' \
 	--env 'DATA_PERMS=770' \
 	--volume /path/to/urban-terror:/urbanterror \
+	--restart=unless-stopped \
 	ich777/urbanterror
 ```
 
