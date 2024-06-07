@@ -30,12 +30,15 @@ else
 fi
 
 echo "---Preparing Server---"
-if [ ! -f ${DATA_DIR}/q3ut4/server.cfg ]; then
-    echo "---'server.cfg' not found, creating...---"
-    cp ${DATA_DIR}/q3ut4/server_example.cfg ${DATA_DIR}/q3ut4/server.cfg
-    sed -i "/set  sv_hostname                       \"New Unnamed Server\"/c\set  sv_hostname                       \"Docker Server\"" ${DATA_DIR}/q3ut4/server.cfg
+if [ -f ${DATA_DIR}/q3ut4/${CONFIG_NAME} ]; then
+    echo "---Found server configuration file: \"${CONFIG_NAME}\"---"
+elif [ ! -f ${DATA_DIR}/q3ut4/${CONFIG_NAME} ] && [ "${CONFIG_NAME}" == "server.cfg" ]; then
+    echo "---\"${CONFIG_NAME}\" not found, creating...---"
+    cp ${DATA_DIR}/q3ut4/server_example.cfg ${DATA_DIR}/q3ut4/${CONFIG_NAME}
+    sed -i "/set  sv_hostname                       \"New Unnamed Server\"/c\set  sv_hostname                       \"Docker Server\"" ${DATA_DIR}/q3ut4/${CONFIG_NAME}
 else
-    echo "---'server.cfg' found, continuing!---"
+    echo "---Custom server configuration file: \"${CONFIG_NAME}\" not found, putting container into sleep mode---"
+    sleep infinity
 fi
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
